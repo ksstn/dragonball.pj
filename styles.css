@@ -1,0 +1,117 @@
+body {
+    background: linear-gradient(135deg, #D03713 0%, #E4B702 100%);
+}
+.navbar-nav .nav-link {
+    text-decoration: none !important;
+    transition: color 0.2s ease;
+}
+.navbar-nav .nav-link:hover {
+    color: #E4B702!important;
+}
+.banner-title {
+    font-family: 'Luckiest Guy';
+    font-size: 155px;
+    -webkit-text-stroke: 3px black;
+}
+
+.welcome-container,
+.char-section {
+    background-color: #00000092;
+    width: 100%;
+}
+
+.welcome-container h1,
+.char-section-title, .about-section-title {
+    font-family: 'Luckiest Guy';
+    font-size: 60px;
+    -webkit-text-stroke: 1px black;
+}
+
+.welcome-container p,
+.char-section-desc, .about-section-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.character-card,
+.image-wrapper {
+    height: 100%;
+}
+
+.character-img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-row {
+    height: 260px;
+}
+
+.card-title {
+    font-family: 'Luckiest Guy';
+    font-size: 24px;
+    color: #E4B702;
+    -webkit-text-stroke: 0.5px black;
+}
+
+.desc {
+    color: #042F67;
+    font-size: 13px;
+}
+
+.card-body p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+@media (max-width: 770px) {
+    .banner-title {
+        font-size: 58px;
+    }
+
+    .card-row {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .image-wrapper {
+        height: auto;
+    }
+
+    .character-img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: contain;
+    }
+
+    .col-md-7.d-flex {
+        display: block !important;
+        height: auto !important;
+    }
+
+    .card-body {
+        height: auto !important;
+        padding: 1rem;
+    }
+
+    .desc {
+        color: #042F67;
+        font-size: 16px;
+    }
+
+    .card-body p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+    }
+
+    .search-bar {
+        bottom: 6% !important;
+        ;
+    }
+}
+
+@media (max-width: 900px) {
+    .banner-title {
+        font-size: 70px;
+    }
+}
