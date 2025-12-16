@@ -15,6 +15,10 @@
 </head>
 
 <body>
+        <!-- page loading bar -->
+    <div id="pageLoadingBar"
+        style="position:fixed; top:0; left:0; width:0%; height:5px; background:#e1133c; z-index:9999; transition: width 0.3s;">
+    </div>
         <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg position-sticky top-0 shadow-sm" style="background-color: #042F67; z-index:1;">
         <div class="container-fluid">
@@ -94,6 +98,24 @@
             </div>
         </div>
     </footer>
+
+<script>
+    const pageLoadingBar = document.getElementById("pageLoadingBar");
+
+        let loadingProgress = 0;
+        const loadingInterval = setInterval(() => {
+            if (loadingProgress < 90) {
+                loadingProgress += 10;
+                pageLoadingBar.style.width = loadingProgress + "%";
+            }
+        }, 200);
+
+        window.addEventListener("load", () => {
+            clearInterval(loadingInterval);
+            pageLoadingBar.style.width = "100%";
+            setTimeout(() => pageLoadingBar.style.display = "none", 300);
+        });
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

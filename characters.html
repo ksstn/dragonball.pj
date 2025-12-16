@@ -15,6 +15,10 @@
 </head>
 
 <body>
+    <!-- page loading bar -->
+    <div id="pageLoadingBar"
+        style="position:fixed; top:0; left:0; width:0%; height:5px; background:#e1133c; z-index:9999; transition: width 0.3s;">
+    </div>
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg position-sticky top-0 shadow-sm" style="background-color: #042F67; z-index:1;">
         <div class="container-fluid">
@@ -42,7 +46,7 @@
         <img src="assets/sub_banner.jpg" class="img-fluid w-100" alt="dragon ball banner">
         <h1 class="position-absolute top-50 start-50 translate-middle text-white banner-title"><span
                 style="color:#FFD21F;">CHARACTERS</span></h1>
-    <!-- search bar -->
+        <!-- search bar -->
         <div class="position-absolute start-50 translate-middle-x w-75 w-md-50 w-sm-100 px-2 search-bar"
             style="bottom: 17%;">
             <div class="bg-warning rounded-2 shadow-sm p-2">
@@ -106,6 +110,21 @@
         let filteredCharacters = [];
         let currentPage = 1;
         const cardsPerPage = 6;
+        const pageLoadingBar = document.getElementById("pageLoadingBar");
+
+        let loadingProgress = 0;
+        const loadingInterval = setInterval(() => {
+            if (loadingProgress < 90) {
+                loadingProgress += 10;
+                pageLoadingBar.style.width = loadingProgress + "%";
+            }
+        }, 200);
+
+        window.addEventListener("load", () => {
+            clearInterval(loadingInterval);
+            pageLoadingBar.style.width = "100%";
+            setTimeout(() => pageLoadingBar.style.display = "none", 300);
+        });
 
         const getCharacters = async () => {
             const response = await fetch("https://dragonball-api.com/api/characters?limit=1000");
@@ -141,7 +160,7 @@
         </div>
     </div>
 </div>`;
-};
+            };
             document.getElementById("pageNumber").innerText = currentPage;
         };
 
@@ -159,6 +178,7 @@
                 renderPage();
             }
         });
+
         // search function
         function search() {
             const query = searchInput.value.toLowerCase();
@@ -168,7 +188,6 @@
         }
         getCharacters();
     </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
