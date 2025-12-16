@@ -15,10 +15,6 @@
 </head>
 
 <body>
-    <div class="container-fluid m-0 p-0">
-    <div style="background-color: green; height: 3px; width: 0%;" id="loadingBar"></div>
-  </div>
-
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg position-sticky top-0 shadow-sm" style="background-color: #042F67; z-index:1;">
         <div class="container-fluid">
@@ -106,7 +102,6 @@
     <script>
         const contents = document.getElementById("contents");
         const searchInput = document.getElementById("searchInput");
-        const loadingBar = document.getElementById("loadingBar");
         let allCharacters = [];
         let filteredCharacters = [];
         let currentPage = 1;
@@ -121,8 +116,6 @@
         };
         const renderPage = () => {
             contents.innerHTML = "";
-            loadingBar.style.width = "0%";
-            let loader = 0;
             const start = (currentPage - 1) * cardsPerPage;
             const end = start + cardsPerPage;
 
@@ -148,9 +141,6 @@
         </div>
     </div>
 </div>`;
-           loader += 100 / cardsPerPage; 
-        if (loader > 100) loader = 100;
-        loadingBar.style.width = loader + "%";
 }
     loadingBar.style.width = "100%";
             document.getElementById("pageNumber").innerText = currentPage;
